@@ -145,7 +145,6 @@ output$plot_perf_basic_incr <- renderPlotly({
   
   
   if (input$id_perf_prod == 'Oil'){
-    #title = paste('Perfil de','Oil'),
     fig %>%
       layout(
         xaxis = list(title = "DATE",
@@ -154,7 +153,6 @@ output$plot_perf_basic_incr <- renderPlotly({
                      showgrid = FALSE))
     
   }else if (input$id_perf_prod == 'Water'){
-    #title = paste('Perfil de','Agua'),    
     fig %>%
       layout(
         xaxis = list(title = "DATE",
@@ -163,7 +161,6 @@ output$plot_perf_basic_incr <- renderPlotly({
                      showgrid = FALSE))
     
   }else if (input$id_perf_prod == 'gas'){
-    #title = paste('Perfil de','Gas'),   
     fig %>%
       layout(
         xaxis = list(title = "DATE",
@@ -183,24 +180,24 @@ output$plot_perf_basic_incr <- renderPlotly({
 data_perf_reserva_ <- reactive({
   
   BD <- bd_perfil_pozo_v
-  #Filtro General, Cosecha, Rondo
+  
   if (input$id_activo_perfil_ == 2){
     BD <- BD %>% filter(activo == input$id_perf_activo)
   }else {}
-  ##Filtro Campo
+  
   ifelse(input$id_perf_campo_ == TRUE, BD <- BD %>% filter(campo %in% input$id_perf_campo), BD <- BD)
-  ### Filtro Tipo
-  ####Filtro General, Basico, Incremental
+ 
+  
   if (input$id_tipo_perfil == 2){
     BD <- BD %>% filter(Tipo == 'Basica')
   }else if (input$id_tipo_perfil == 3){
     BD <- BD %>% filter(Tipo == 'Incremental')
   }else{BD <- BD}
-  ###Filtro Trabajo
+  
   ifelse(input$id_perf_trabajo_ == TRUE, BD <- BD %>% filter(Trabajo %in% input$id_perf_trabajo), BD <- BD)
-  ###Filtro Pozo
+  
   ifelse(input$id_perf_pozo_ == TRUE, BD <- BD %>% filter(pozo %in% input$id_perf_pozo), BD <- BD)
-  #Filtro Clasificacion
+ 
   ifelse(input$id_clasificacion_perf == 'General', BD <- BD, BD <- BD %>% filter(clasificacion == input$id_clasificacion_perf))
   
   BD <- BD %>%
@@ -225,7 +222,6 @@ output$plot_perf_reserva <- renderPlotly({
   
   if (input$id_perf_prod == 'Oil'){
     fig %>%
-      #title = paste('Perfil de','Oil'),
       layout(
         xaxis = list(title = "DATE",
                      showgrid = FALSE),
@@ -233,7 +229,6 @@ output$plot_perf_reserva <- renderPlotly({
                      showgrid = FALSE))
     
   }else if (input$id_perf_prod =='Water'){
-    #title = paste('Perfil de','Agua'), 
     fig %>%
       layout(
         xaxis = list(title = "DATE",
@@ -243,7 +238,6 @@ output$plot_perf_reserva <- renderPlotly({
     
   }else if (input$id_perf_prod == 'gas'){
     
-    #title = paste('Perfil de','Gas'),   
     fig %>%
       layout(
         xaxis = list(title = "DATE",
@@ -262,24 +256,23 @@ output$plot_perf_reserva <- renderPlotly({
 data_perf_campo_ <- reactive({
   
   BD <- bd_perfil_pozo_v
-  #### Filtro General, Cosecha, Rondo
   if (input$id_activo_perfil_ == 2){
+    
     BD <- BD %>% filter(activo == input$id_perf_activo)
   }else {}
-  ###################################################################################### Filtro Campo
+  
   ifelse(input$id_perf_campo_ == TRUE, BD <- BD %>% filter(campo %in% input$id_perf_campo), BD <- BD)
-  ###################################################################################### Filtro Tipo
-  ###################################################################################### Filtro General, Basico, Incremental
+  
   if (input$id_tipo_perfil == 2){
     BD <- BD %>% filter(Tipo == 'Basica')
   }else if (input$id_tipo_perfil == 3){
     BD <- BD %>% filter(Tipo == 'Incremental')
   }else{BD <- BD}
-  ###################################################################################### Filtro Trabajo
+  
   ifelse(input$id_perf_trabajo_== TRUE, BD <- BD %>% filter(Trabajo %in% input$id_perf_trabajo), BD <- BD)
-  ###################################################################################### Filtro Pozo
+  
   ifelse(input$id_perf_pozo_ == TRUE, BD <- BD %>% filter(pozo %in% input$id_perf_pozo), BD <- BD)
-  ###################################################################################### Filtro Clasificacion
+  
   ifelse(input$id_clasificacion_perf == 'General', BD <- BD, BD <- BD %>% filter(clasificacion==input$id_clasificacion_perf))
   
   BD <- BD %>%
@@ -299,7 +292,6 @@ output$plot_perf_campo <- renderPlotly({
                 type ='scatter', mode = 'none',
                 stackgroup = 'one')
   
-  #title = paste('Perfil de','Oil'), 
   if (input$id_perf_prod == 'Oil'){
     fig %>%
       layout(
@@ -309,7 +301,6 @@ output$plot_perf_campo <- renderPlotly({
                      showgrid = FALSE))
     
   }else if (input$id_perf_prod == 'Water'){
-    #title = paste('Perfil de','Agua'),  
     fig %>%
       layout(
         xaxis = list(title = "DATE",
@@ -319,7 +310,6 @@ output$plot_perf_campo <- renderPlotly({
     
   }else if (input$id_perf_prod == 'gas'){
     
-    #title = paste('Perfil de','Gas'), 
     fig %>%
       layout(
         xaxis = list(title = "DATE",
@@ -339,28 +329,28 @@ data_perf_vol_ <- reactive({
   
   options(dplyr.summarise.inform = FALSE)
   BD <- bd_perfil_pozo_v
-  ###################################################################################### Filtro General, Cosecha, Rondo
+  
   if (input$id_activo_perfil_ == 2){
     BD <- BD %>% filter(activo == input$id_perf_activo)
   }else {}
-  ###################################################################################### Filtro Campo
+  
   ifelse(input$id_perf_campo_ == TRUE, BD <- BD %>% filter(campo %in% input$id_perf_campo), BD <- BD)
-  ###################################################################################### Filtro Trabajo
+  
   ifelse(input$id_perf_trabajo_ == TRUE, BD <- BD %>% filter(Trabajo %in% input$id_perf_trabajo), BD <- BD)
-  ###################################################################################### Filtro Pozo
+  
   ifelse(input$id_perf_pozo_ == TRUE,BD <- BD %>% filter(pozo %in% input$id_perf_pozo), BD <- BD)
-  ###################################################################################### Filtro Clasificacion
+  
   ifelse(input$id_clasificacion_perf == 'General', BD <- BD, BD <- BD %>% filter(clasificacion==input$id_clasificacion_perf))
-  ######################################################################################
+  
   BD <- BD %>% group_by(Tipo, campo)
-  ###################################################################################### Filtro Gas, Agua, Aceite
+  
   if (input$id_perf_prod =='gas'){BD <- BD %>% summarise(Suma_vol = round(sum(Vol_gas), 3))
   }else if (input$id_perf_prod =='Water'){BD <- BD %>% summarise(Suma_vol = round(sum(vol_agua),3 ))
   }else{BD <- BD %>% summarise(Suma_vol = round(sum(Vol), 3))}
-  ###################################################################################### Modificacion BD
+  
   BD <- BD %>%
     bind_rows(summarise_all(., funs(if(is.numeric(.)) sum(., na.rm = TRUE) else "Total")))
-  ###################################################################################### Filtro General, Basico, Incremental
+  
   if (input$id_tipo_perfil == 2){
     BD <- BD %>% filter(Tipo == 'Basica')
   }else if (input$id_tipo_perfil == 3){
@@ -369,13 +359,13 @@ data_perf_vol_ <- reactive({
   
   BD[BD$campo=='Total',]
 })
-#####################.
+
 
 output$plot_perf_vol <- renderPlotly({
 
   fig <-plot_ly(data_perf_vol_(),x = ~Tipo, y = ~Suma_vol, color = ~Tipo,
                 type = 'bar')
-  #title = paste('Perfil de','Oil'),
+  
 
   if (input$id_perf_prod == 'Oil'){
     fig %>%
@@ -386,7 +376,7 @@ output$plot_perf_vol <- renderPlotly({
                      showgrid = FALSE))
 
   }else if (input$id_perf_prod == 'Water'){
-    #title = paste('Perfil de','Agua'),
+    
     fig %>%
       layout(
         xaxis = list(title = "TIPO",
@@ -396,7 +386,7 @@ output$plot_perf_vol <- renderPlotly({
 
   }else if (input$id_perf_prod == 'gas'){
 
-    #title = paste('Perfil de','Gas'),
+    
     fig %>%
       layout(
         xaxis = list(title = "TIPO",
@@ -416,28 +406,28 @@ table_data <- reactive({
   
   options(dplyr.summarise.inform = FALSE)
   BD <- bd_perfil_pozo_v
-  ###################################################################################### Filtro General, Cosecha, Rondo
+  
   if (input$id_activo_perfil_ == 2){
     BD <- BD %>% filter(activo == input$id_perf_activo)
   }else {}
-  ###################################################################################### Filtro Campo
+  
   ifelse(input$id_perf_campo_ == TRUE, BD <- BD %>% filter(campo %in% input$id_perf_campo), BD <- BD)
-  ###################################################################################### Filtro Trabajo
+  
   ifelse(input$id_perf_trabajo_ == TRUE,BD <- BD %>% filter(Trabajo %in% input$id_perf_trabajo), BD <- BD)
-  ###################################################################################### Filtro Pozo
+  
   ifelse(input$id_perf_pozo_ == TRUE,BD <- BD %>% filter(pozo %in% input$id_perf_pozo), BD <- BD)
-  ###################################################################################### Filtro Clasificacion
+  
   ifelse(input$id_clasificacion_perf == 'General', BD <- BD, BD <- BD %>% filter(clasificacion==input$id_clasificacion_perf))
-  ######################################################################################
+  
   BD <- BD %>% group_by(Tipo, campo)
-  ###################################################################################### Filtro Gas, Agua, Aceite
+  
   if (input$id_perf_prod =='gas'){BD <- BD %>% summarise(Suma_vol = round(sum(Vol_gas), 3))
   }else if (input$id_perf_prod == 'Water'){BD <- BD %>% summarise(Suma_vol = round(sum(vol_agua), 3))
   }else{BD <- BD %>% summarise(Suma_vol = round(sum(Vol), 3))}
-  ###################################################################################### Modificacion BD
+  
   BD <- BD %>% spread(Tipo, Suma_vol) %>%
     bind_rows(summarise_all(., funs(if(is.numeric(.)) sum(., na.rm = TRUE) else "Total")))
-  ###################################################################################### Filtro General, Basico, Incremental
+  
   if (input$id_tipo_perfil == 2){
     BD <- BD %>% select(campo, Basica)
   }else if (input$id_tipo_perfil == 3){

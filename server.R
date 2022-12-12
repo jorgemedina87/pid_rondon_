@@ -24,7 +24,7 @@ library(rio)
 
 #bd_perfil_pozo_v <- read_excel(file.path("data/bd_cr_c_nf_nn.xlsx"), sheet = "Sheet1")
 
-#bd_perfil_pozo_v <- rio::import("https://github.com/jorgemedina87/pid_rondon_/raw/main/data/bd_cr_c_nf_nn.xlsx")
+bd_perfil_pozo_v <- rio::import("https://github.com/jorgemedina87/pid_rondon_/raw/main/data/bd_cr_c_nf_nn.xlsx")
 
 #bd_perfil_pozo_ <- read_excel(file.path("data/bd_perfil_pozo_.xlsx"), sheet = "Sheet1")
 
