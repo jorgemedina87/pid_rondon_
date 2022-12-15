@@ -165,7 +165,7 @@ output$plot_perf_basic_incr <- renderPlotly({
       layout(
         xaxis = list(title = "DATE",
                      showgrid = FALSE),
-        yaxis = list(title = "KPSD",
+        yaxis = list(title = "KPCD",
                      showgrid = FALSE))
     
   }
@@ -242,7 +242,7 @@ output$plot_perf_reserva <- renderPlotly({
       layout(
         xaxis = list(title = "DATE",
                      showgrid = FALSE),
-        yaxis = list(title = "KPSD",
+        yaxis = list(title = "KPCD",
                      showgrid = FALSE))
     
   }
@@ -314,7 +314,7 @@ output$plot_perf_campo <- renderPlotly({
       layout(
         xaxis = list(title = "DATE",
                      showgrid = FALSE),
-        yaxis = list(title = "KPSD",
+        yaxis = list(title = "KPCD",
                      showgrid = FALSE))
     
   }
@@ -381,7 +381,7 @@ output$plot_perf_vol <- renderPlotly({
       layout(
         xaxis = list(title = "TIPO",
                      showgrid = FALSE),
-        yaxis = list(title = "MBLS",
+        yaxis = list(title = "MPCD",
                      showgrid = FALSE))
 
   }else if (input$id_perf_prod == 'gas'){

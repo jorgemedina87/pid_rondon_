@@ -11,7 +11,7 @@ Well_Well_Basic <- tabItem(tabName = "Well_Well_Basic",
                                                                      label= HTML("<li>  Seleccione  analisis desea explorar.</li>"), 
                                                                      choices = c("Perfil"='Perfil',
                                                                                  "N pozo"='n_well',
-                                                                                 "Sin Costo Fijo"='sin_fijo'),
+                                                                                 "Sin Costo Fijos"='sin_fijo'),
                                                                      checkIcon = list(yes = icon("check")),
                                                                      select='Perfil' ,
                                                                      justified = TRUE
@@ -21,6 +21,11 @@ Well_Well_Basic <- tabItem(tabName = "Well_Well_Basic",
                                        tags$script("$(\"input:radio[name='id_D_Dec'][value='sin_fijo']\").parent().css('background-color', '#B4CDCD');"),
                                        
                                 ),
+                                
+                                
+                               HTML("NOTA: Distribuci&oacuten de costos fijos en b&aacutesica 
+                                         (por producci&oacuten de aceite- Perfil, por n&uacutemero de pozos - N pozo)"),
+                                 
                                 
                                 
                                 column(12,

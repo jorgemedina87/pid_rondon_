@@ -4,6 +4,7 @@ library(shiny)
 library(shinydashboard)
 library(shinyWidgets)
 library(shinycssloaders)
+library(shinyauthr)
 library(plotly)
 library(shiny)
 library(shinyBS) 
@@ -30,6 +31,7 @@ library(purrr)
 library(rvest)
 
 source("modules/ui_tab_perfil.R")
+source("modules/ui_Login.R", local = TRUE)
 #source("modules/ui_VPN_Basic.R", local = TRUE)
 source("modules/ui_VPN_total.R", local = TRUE)
 source("modules/ui_Well_Well_Basic.R", local = TRUE)
@@ -43,17 +45,22 @@ ui <- dashboardPage(
   skin="green",
   title = "PID RONDON",
   # HEADER ------------------------------------------------------------------
-  dashboardHeader(title = "PID RONDON"), 
+  dashboardHeader(title = "PID RONDON",
+                  tags$li(class = "dropdown", style = "padding: 8px;",
+                          shinyauthr::logoutUI("logout")),
+                  tags$li(class = "dropdown", 
+                          tags$a(icon("lock")))
+  ),
   
   # SIDEBAR -----------------------------------------------------------------
   
   dashboardSidebar(
     br(),
     sidebarMenu(
-      menuItem(HTML("<b> Perfiles </b>"), tabName = "tab_perfil", icon = icon("area-chart")),
-      menuItem(HTML("<b> Evaluacion Economica </b>"), tabName = "VPN_total", icon = icon("dollar-sign")
+      menuItem(HTML("<b> 1. Perfiles </b>"), tabName = "tab_perfil", icon = icon("area-chart")),
+      menuItem(HTML("<b> 2. Evaluacion Economica </b>"), tabName = "VPN_total", icon = icon("dollar-sign")
                ),
-       menuItem(HTML("<b> Pozo a Pozo </b>"),  icon = icon("dollar-sign"),
+       menuItem(HTML("<b> 3. Pozo a Pozo </b>"),  icon = icon("dollar-sign"),
        menuSubItem("Basica", tabName = "Well_Well_Basic", icon = icon("fas fa-chart-area")),
        menuSubItem("WO", tabName = "VPN_WO", icon = icon("fas fa-chart-area")),
               menuSubItem("NW", tabName = "VPN_NW", icon = icon("fas fa-file-export"))
@@ -62,7 +69,7 @@ ui <- dashboardPage(
       br(),
       br(),
       hr(),
-      menuItem(HTML("<b>Help</b>"), tabName = "tab_help", icon = icon("life-ring"), selected=TRUE)),
+      menuItem(HTML("<b>Login </b>"), tabName = "Login", icon = icon("lock"), selected=TRUE)),
     
     br(),
     br(),
@@ -81,6 +88,7 @@ ui <- dashboardPage(
   dashboardBody(
    
     tabItems(
+      Login,
       tab_perfil,
       VPN_total,
       

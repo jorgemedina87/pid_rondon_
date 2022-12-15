@@ -4,7 +4,7 @@ tab_perfil <- tabItem(tabName = "tab_perfil",
                                           div(title = "Select what aspect of inequality you want to explore.", # tooltip
                                               style = "margin-top: 10px; margin-bottom: 20px;",
                                               radioGroupButtons("id_perf_prod",
-                                                                label = shiny::HTML("<li> Seleccione  analisis desea explorar.</li>"),
+                                                                label = shiny::HTML("<li> Seleccione analisis desea explorar.</li>"),
                                                                 choices = c("Aceite"='Oil',
                                                                             "Agua"='Water',
                                                                             "Gas"='gas'),
@@ -22,7 +22,7 @@ tab_perfil <- tabItem(tabName = "tab_perfil",
 
                                    div(title="",
                                        style = "margin-top: 10px; margin-bottom: 20px;",
-                                       #strong("Nota Se incluye perfil de  rondon para efecto de  analisis de  restriccion de facilidades", style = "color:#008B45"),
+                                       strong("Nota Se incluye perfil de  rondon para efecto de  analisis de  restriccion de facilidades", style = "color:#008B45"),
                                        awesomeRadio("id_activo_perfil_", label = shiny::HTML("<li> Seleccione el tipo de  &aacutenalisis </li>"), #br required to try and keep alignment across columns
                                                     choices = list("General" = 1, "Activo" = 2),
                                                     selected = 1, inline = TRUE, checkbox = TRUE, status = "success")),

@@ -5,9 +5,9 @@ account: caroly-medina
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 7870810
-bundleId: 6627917
+bundleId: 6642119
 url: https://caroly-medina.shinyapps.io/pid_rondon/
-when: 1670864132.67345
-lastSyncTime: 1670864132.67346
+when: 1671145270.65812
+lastSyncTime: 1671145270.65813
 asMultiple: FALSE
 asStatic: FALSE

@@ -118,7 +118,7 @@ VPN_total <- tabItem(tabName = "VPN_total",
                                   column(12,
                                          shiny::hr(),
                                          div(title = "",
-                                             #em("Nota NW Pozos Infill - NFE Pozos Near Field Exploration"),
+                                             em("Nota NW Pozos Infill - NFE Pozos Near Field Exploration"),
                                              p(tags$b(HTML("<li> Seleccione el  analisis por  basica WO o NW </li>")))),
                                          
                                          column(4,
